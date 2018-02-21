@@ -43,8 +43,16 @@ function bulma_pagination() {
       <ul class="pagination-list">';
     }
 
+    //Pages from the first to the current one
+    for ($i=1; $i<=$paged ; $i++) {
+      if ($i==$paged) {
+        echo '<li><a class="pagination-link is-current" href=/page/'.$i.'>'.$i.'</a></li>';
+      } else {
+        echo '<li><a class="pagination-link" href=/page/'.$i.'>'.$i.'</a></li>';
+      }
+    }
     //Pages from the next one to the last one
-    for ($i==$paged+1; $i<=$total_pages ; $i++) {
+    for ($i=$paged+1; $i<=$total_pages ; $i++) {
       echo '<li><a class="pagination-link" href=/page/'.$i.'>'.$i.'</a></li>';
     }
 
