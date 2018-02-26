@@ -2,7 +2,7 @@
 /*
 Class Name: bulma_walker
 Description: Custom walker using Bulma components (tested with Bulma 0.6.2 on Wordpress 4.9.4)
-Version: 0.1
+Version: 0.2
 Author: Domenico Majorana
 Credit: Based on https://www.microdot.io/simpler-wp-nav-menu-markup/
 */
@@ -13,7 +13,7 @@ class bulma_walker extends Walker_Nav_Menu {
 	}
 
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
-		$output .= '</div></div>';
+		$output .= '</div> <!-- .navbar-dropdown -->';
 	}
 
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
@@ -34,6 +34,10 @@ class bulma_walker extends Walker_Nav_Menu {
 	}
 
 	public function end_el( &$output, $item, $depth = 0, $args = array() ) {
-		$output .= '';
+		if (in_array('menu-item-has-children',$item->classes)) {
+			$output .= '</div> <!-- .has-dropdown -->';
+		} else {
+			$output .= '';
+		}
 	}
 }
