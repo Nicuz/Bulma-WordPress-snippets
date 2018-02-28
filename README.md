@@ -34,7 +34,7 @@
       <?php wp_nav_menu(array(
         'theme-location' => 'nav-menu', //change it according to your register_nav_menus() function
         'depth' => 2,
-        'container' => 'navbar-end,
+        'container' => 'navbar-end',
         'items_wrap' => '%3$s'
         'walker' => new bulma_walker(),
       ));
