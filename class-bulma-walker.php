@@ -1,8 +1,8 @@
 <?php
 /*
-Class Name: bulma-walker
+Class Name: Bulma_Walker
 Description: Custom walker using Bulma components (tested with Bulma 0.6.2 on Wordpress 4.9.4)
-Version: 0.2
+Version: 0.3
 Author: Domenico Majorana
 Credit: Based on https://www.microdot.io/simpler-wp-nav-menu-markup/
 */
