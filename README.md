@@ -36,7 +36,7 @@
         'depth' => 2,
         'container' => 'navbar-end',
         'items_wrap' => '%3$s',
-        'walker' => new bulma_walker(),
+        'walker' => new Bulma_Walker(),
       ));
       ?>
     </div>
