@@ -31,12 +31,12 @@ function bulma_pagination() {
     if ($paged == 1) {
       echo '<a class="pagination-previous" disabled>Previous</a>';
     } else {
-      echo '<a class="pagination-previous" href=/page/'.($paged-1).'>Previous</a>';
+      echo '<a class="pagination-previous" href="'.get_previous_posts_page_link().'">Previous</a>';
     }
 
     //Disable Next button if the current page is the last one
     if ($paged<$total_pages) {
-      echo '<a class="pagination-next" href=/page/'.($paged+1).'>Next</a>
+      echo '<a class="pagination-next" href="'.get_next_posts_page_link().'">Next</a>
       <ul class="pagination-list">';
     } else {
       echo '<a class="pagination-next" disabled>Next</a>
@@ -46,14 +46,14 @@ function bulma_pagination() {
     //Pages from the first to the current one
     for ($i=1; $i<=$paged ; $i++) {
       if ($i==$paged) {
-        echo '<li><a class="pagination-link is-current" href=/page/'.$i.'>'.$i.'</a></li>';
+        echo '<li><a class="pagination-link is-current" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
       } else {
-        echo '<li><a class="pagination-link" href=/page/'.$i.'>'.$i.'</a></li>';
+        echo '<li><a class="pagination-link" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
       }
     }
     //Pages from the next one to the last one
     for ($i=$paged+1; $i<=$total_pages ; $i++) {
-      echo '<li><a class="pagination-link" href=/page/'.$i.'>'.$i.'</a></li>';
+      echo '<li><a class="pagination-link" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
     }
 
     echo '</ul>';
