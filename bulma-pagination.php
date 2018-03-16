@@ -2,7 +2,7 @@
 /*
 Class Name: bulma_pagination
 Description: Custom pagination using Bulma components (tested with Bulma 0.6.2 on Wordpress 4.9.4)
-Version: 0.1
+Version: 0.2
 Author: Domenico Majorana
 */
 
@@ -24,36 +24,31 @@ function bulma_pagination() {
   ) );
 
   if ( is_array( $pages ) ) {
-    //Get current page
+  //Get current page
     $paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var( 'paged' );
 
-    //Disable Previous button if the current page is the first one
+  //Disable Previous button if the current page is the first one
     if ($paged == 1) {
       echo '<a class="pagination-previous" disabled>Previous</a>';
     } else {
-      echo '<a class="pagination-previous" href="'.get_previous_posts_page_link().'">Previous</a>';
+      echo '<a class="pagination-previous" href="' . get_previous_posts_page_link() . '">Previous</a>';
     }
 
-    //Disable Next button if the current page is the last one
+  //Disable Next button if the current page is the last one
     if ($paged<$total_pages) {
-      echo '<a class="pagination-next" href="'.get_next_posts_page_link().'">Next</a>
+      echo '<a class="pagination-next" href="' . get_next_posts_page_link() . '">Next</a>
       <ul class="pagination-list">';
     } else {
       echo '<a class="pagination-next" disabled>Next</a>
       <ul class="pagination-list">';
     }
 
-    //Pages from the first to the current one
-    for ($i=1; $i<=$paged ; $i++) {
-      if ($i==$paged) {
-        echo '<li><a class="pagination-link is-current" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
+    for ($i=1; $i<=$total_pages; $i++) {
+      if ($i == $paged) {
+        echo '<li><a class="pagination-link is-current" href="' . get_pagenum_link($i) . '">' . $i . '</a></li>';
       } else {
-        echo '<li><a class="pagination-link" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
+        echo '<li><a class="pagination-link" href="'. get_pagenum_link($i) . '">' . $i . '</a></li>';
       }
-    }
-    //Pages from the next one to the last one
-    for ($i=$paged+1; $i<=$total_pages ; $i++) {
-      echo '<li><a class="pagination-link" href="'.get_pagenum_link($i).'">'.$i.'</a></li>';
     }
 
     echo '</ul>';
